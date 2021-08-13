@@ -1,41 +1,45 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Solution 
 {	 
 	public static void main(String args[])
 	{
-		int A[] = new int[5];
-		// Hard Coded Inputs
-		A[0] = 0;A[1] = 1;A[2] = 0;A[3] = 1;A[4] = 1;
-		// User Given Inputs
-		/*System.out.println("Enter Values");
+		long len = 0;
+		System.out.println("Enter the no of elements"); //Taking the no of elements to be inserted in the ArrayList
+		Scanner sc1 = new Scanner(System.in);
+		len = sc1.nextLong();
+		List<Integer> A = new ArrayList<Integer>();
+		System.out.println("Enter Values"); //Taking the values of the elements
 		Scanner sc = new Scanner(System.in);
-		for(int x=0;x<a.length;x++)
+		for(int x=0;x<len;x++)
 		{
-			a[x] = sc.nextInt();
-		}*/
+			A.add(sc.nextInt()); // Adding the values to the ArrayList
+		}
 		System.out.println(solution(A)); //calling the function solution and displaying the value returned by it.
 	}
-	public static int solution(int[] A) //function that returns the no of pairs of crossing people
+	public static int solution(List<Integer> A) //function that returns the no of pairs of crossing people
 	{
 		int count1 = 0;
-		for(int i=0;i<4;i++)            
+		for(int i=0;i<A.size()-1;i++)          //compairing the elements of the ArrayList  
 		{
-			for(int j=i+1;j<5;j++)
+			for(int j=i+1;j<A.size();j++)
 			{
-				if(A[i] != A[j] && A[i] != 1)  
+				if(A.get(i) != A.get(j) && A.get(i) != 1)  //Making pairs in format (0,1)
+						
 				{
-				    count1++;
+				    count1++; // counting the no of pairs
 				}
 			}
 		}
 		if(count1 < 1000000000)
 		{
-			return count1;
+			return count1; //if no of (0,1) pairs is less than 1000000000 returning the value of count
 		}
 		else
 		{
-			return -1;
+			return -1; // else returning -1
 		}
 	}
 }
